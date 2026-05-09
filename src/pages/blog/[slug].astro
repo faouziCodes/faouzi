@@ -1,0 +1,31 @@
+---
+// src/pages/blog/[slug].astro
+import { getCollection, render } from "astro:content";
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+
+<Layout>
+  <Header />
+<div class="px-10 sm:px-0 sm:mb-8 sm:flex sm:justify-center">
+    <div class="grid gap-5">
+      <a class="w-fit bg-transparent hover:bg-black text-black hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded" href="/my_skills">← Terug</a>
+  <div class="prose lg:prose-xl ">
+      <Content />
+  </div>
+    </div>
+  </div>
+</Layout>

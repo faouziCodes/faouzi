@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
+---
+<div class="hidden sm:mb-8 sm:flex sm:justify-center">
+  <div class="w-1/3 grid gap-4">
+    <h2 class="font-medium text-lg">My skills</h2>
+    <div class="text-gray-500">
+Ik bouw websites die niet alleen mooi ogen — ze werken precies zoals jouw bedrijf ze nodig heeft.
+
+Of het nu gaat om een eenvoudige webshop of een grote, datagedreven applicatie, ik ontwikkel systemen die betrouwbaar, schaalbaar en gebruiksvriendelijk zijn. Ik zorg zowel voor het ontwerp als voor de functionaliteit, zodat je een complete oplossing krijgt.
+
+Mijn ervaring reikt ook tot embedded systemen en compilerontwikkeling, wat mij een dieper inzicht geeft in prestaties, efficiëntie en hoe je software bouwt die duurzaam en toekomstbestendig is.
+    </div>
+    <div class="grid gap-4">
+      <h2 class="font-medium text-lg">Projecten</h2>
+      <div>
+      {posts.map((post) => (
+
+            <a class="flex gap-4" href={"/blog/" + post.data.title}>
+            <img src={post.data.logo} class="h-20 w-20 rounded" />
+          <div>
+              <h2 class="capitalize">{post.data.title}</h2>
+              <p class="text-gray-500 truncate w-96">{post.data.description}</p>
+          </div>
+            </a>
+      ))}
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="sm:hidden grid gap-8 px-10">
+<h2 class="font-medium text-lg">My skills</h2>
+<div class="text-gray-500">
+Ik bouw websites die niet alleen mooi ogen — ze werken precies zoals jouw bedrijf ze nodig heeft.
+
+Of het nu gaat om een eenvoudige webshop of een grote, datagedreven applicatie, ik ontwikkel systemen die betrouwbaar, schaalbaar en gebruiksvriendelijk zijn. Ik zorg zowel voor het ontwerp als voor de functionaliteit, zodat je een complete oplossing krijgt.
+
+Mijn ervaring reikt ook tot embedded systemen en compilerontwikkeling, wat mij een dieper inzicht geeft in prestaties, efficiëntie en hoe je software bouwt die duurzaam en toekomstbestendig is.
+    </div>
+      <div>
+<h2 class="font-medium text-lg">Projecten</h2>
+      {posts.map((post) => (
+            <a class="flex gap-4" href={"/blog/" + post.data.title}>
+            <img src={post.data.logo} class="h-20 w-20 rounded" />
+          <div>
+              <h2 class="capitalize">{post.data.title}</h2>
+              <p class="text-gray-500 truncate w-52">{post.data.description}</p>
+          </div>
+            </a>
+      ))}
+        </div>
+</div>

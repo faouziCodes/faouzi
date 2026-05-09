@@ -1,0 +1,25 @@
+---
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+	<Header />
+	<div class="hidden sm:mb-8 sm:grid gap-5 sm:justify-center">
+		<div class="w-[600px] grid gap-3">
+			<h2 class="font-medium text-lg">Contact</h2>
+			<p class="text-gray-500">Bent u geïnteresseerd in het maken van een website, neem dan via de volgende methodes contact op:</p>
+		</div>
+		<a class="flex gap-5 items-center font-medium" href="mailto:faouzib1@outlook.com">
+			<img class="w-10" src="/yep.png" />
+			faouzib1@outlook.com
+		</a>
+		<a class="flex gap-5 items-center font-medium" href="tel:+31639187385">
+			<img class="w-10" src="/call.png" />
+			0639187385
+		</a>
+	</div>
+</Layout>
