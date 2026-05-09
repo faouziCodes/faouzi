@@ -3,12 +3,11 @@ import { Resend } from 'resend';
 export const prerender = false; // Not needed in 'server' mode
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
-const key = import.meta.env.EMAIL_API;
 
 const errors = { msg : "", email: "" };
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
 if (Astro.request.method === "POST") {
+  const key = import.meta.env.EMAIL_API;
   try {
     const data = await Astro.request.formData();
     const email = data.get("email");
@@ -19,9 +18,7 @@ if (Astro.request.method === "POST") {
     if (typeof email !== "string" || email.length < 5) {
       errors.email += "Email klopt niet. ";
     }
-    // Do something with the data
 
-		console.log(key)
     const resend = new Resend(key);
 
     resend.emails.send({
